@@ -1,0 +1,192 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+          integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/assets/scss/css/style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="container">
+                <div class="row w-100 justify-content-between align-items-center">
+                    <div class="logo col-lg-2 d-flex align-items-center">
+                        <a class="navbar-brand" href="#">
+                            <h2 style="color: #556270;">@layout.GetDatas().Result.FirstOrDefault(h => h.Key == "Logo").Value</h2>
+                        </a>
+                    </div>
+                    <div class="services col-lg-8">
+                        <ul class="d-flex justify-content-between align-items-center">
+                            <li class="mt-1"><a href="">Home</a></li>
+                            <li class="mt-1"><a href="">About</a></li>
+                            <li class="mt-1"><a href="">Services</a></li>
+                            <li class="mt-1"><a href="">Portfolio</a></li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="mt-1"><a asp-controller="Account" asp-action="Edit">@User.Identity.Name</a></li>
+                                <li class="mt-1"><a asp-controller="Account" asp-action="Logout">Logout</a></li>
+                            }
+                            else
+                            {
+                                <li class="mt-1"><a asp-controller="Account" asp-action="Register">Register</a></li>
+                                <li class="mt-1"><a asp-controller="Account" asp-action="Login">Login</a></li>
+                            }
+                            <li class="mt-1"><a href="">Contact</a></li>
+                            <li><a href="" class="btn btn-danger text-light">Get Started</a></li>
+                        </ul>
+                    </div>
+                    <div class="bars col-lg-4 w-25">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                     aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Offcanvas</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Link</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Services</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">Portfolio</a>
+                            </li>
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li class="mt-1"><a asp-controller="Account" asp-action="Edit">@User.Identity.Name</a></li>
+                                <li class="mt-1"><a asp-controller="Account" asp-action="Logout">Logout</a></li>
+                            }
+                            else
+                            {
+                                <li class="mt-1"><a asp-controller="Account" asp-action="Register">Register</a></li>
+                                <li class="mt-1"><a asp-controller="Account" asp-action="Login">Login</a></li>
+                            }
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button"
+                                   data-bs-toggle="dropdown" aria-expanded="false">
+                                    Dropdown
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+    <footer>
+        <section id="footer-section" class="py-5 text-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 footer-part">
+                        <h4>Sailor</h4>
+                        <small>
+                            @layout.GetDatas().Result.FirstOrDefault(a => a.Key == "Address").Value
+                        </small> <br>
+                        <small><span style="font-weight: bold;">Phone: </span>@layout.GetDatas().Result.FirstOrDefault(p => p.Key == "Phone").Value</small> <br>
+                        <small><span style="font-weight: bold;">Email: </span>@layout.GetDatas().Result.FirstOrDefault(e => e.Key == "Email").Value</small>
+
+                        <div class="social-medias mt-2 d-flex justify-content-between w-75">
+                            <div class="icons">
+                                <i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Twitter").Value"></i>
+                            </div>
+                            <div class="icons">
+                                <i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Facebook").Value"></i>
+                            </div>
+                            <div class="icons">
+                                <i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Instagram").Value"></i>
+                            </div>
+                            <div class="icons">
+                                <i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "Skype").Value"></i>
+                            </div>
+                            <div class="icons">
+                                <i class="@layout.GetDatas().Result.FirstOrDefault(i => i.Key == "LinkEdin").Value"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 footer-part">
+                        <strong>Useful Links</strong>
+                        <ul>
+                            <li><span><i class="fa-solid fa-chevron-right"></i></span><span class="ms-2"><a href="">Home</a></span></li>
+                            <li><span><i class="fa-solid fa-chevron-right"></i></span><span class="ms-2"><a href="">About Us</a></span></li>
+                            <li><span><i class="fa-solid fa-chevron-right"></i></span><span class="ms-2"><a href="">Services</a></span></li>
+                            <li><span><i class="fa-solid fa-chevron-right"></i></span><span class="ms-2"><a href="">Terms of service</a></span></li>
+                            <li><span><i class="fa-solid fa-chevron-right"></i></span><span class="ms-2"><a href="">Privacy policy</a></span></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 footer-part">
+                        <strong>Our Services</strong>
+                        <ul>
+                            <li><span><i class="fa-solid fa-chevron-right"></i></span><span class="ms-2"><a href="">Web-Design</a></span></li>
+                            <li><span><i class="fa-solid fa-chevron-right"></i></span><span class="ms-2"><a href="">Web-Development</a></span></li>
+                            <li><span><i class="fa-solid fa-chevron-right"></i></span><span class="ms-2"><a href="">Product Management</a></span></li>
+                            <li><span><i class="fa-solid fa-chevron-right"></i></span><span class="ms-2"><a href="">Marketing</a></span></li>
+                            <li><span><i class="fa-solid fa-chevron-right"></i></span><span class="ms-2"><a href="">Graphic Design</a></span></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3 footer-part">
+                        <strong>Our Newsletter</strong>
+                        <small>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</small>
+                        <div class="subscribe">
+                            <input type="text">
+                            <button class="btn btn-danger btns">Subscribe</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="endl" class="py-5">
+            <div class="container">
+                <div class="row">
+                    <div class="goodbye text-light text-center">
+                        <small>© Copyright<strong>Sailor</strong>All Rights Reserved</small> <br>
+                        <small>Designed by <a href="">BootstrapMade</a></small>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+            crossorigin="anonymous"></script>
+    <script src="~/assets/Js/script.js"></script>
+</body>
+
+</html>

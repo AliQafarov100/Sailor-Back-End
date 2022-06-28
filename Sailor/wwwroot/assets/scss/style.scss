@@ -1,0 +1,235 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.navbar{
+    height: 70px;
+    background-color: whitesmoke;
+    z-index: 999;
+
+    .logo{
+        width: 25%;
+    }
+
+    .bars{
+       
+        height: 50px;
+    }
+
+    .services{
+        ul{
+            padding-left: 0px;
+
+            li{
+                list-style: none;
+
+                a{
+                   text-decoration: none;
+                   color: #556270;
+                   transition: 0.5s;
+
+                   &:hover{
+                     color: red;
+                   }
+                }
+            }
+        }
+    }
+}
+
+#slider-section{
+     height: 750px;
+    
+
+    .items{
+        
+        height: 750px;
+        background-position: center;
+        background-repeat: no-repeat;
+        position: absolute;
+        opacity: 0!important;
+        transition: 0.5s;
+
+        .false-div{
+            width: 100%;
+            height: 750px;
+            background-color: rgba(0, 0, 0, 0.6);
+
+            .slider-info{
+                width: 75%;
+                margin: 0px auto;
+            }
+
+            .manage{
+                
+                i{
+                    width: 50px;
+                    height: 50px;
+                    background-color: rgba(255, 255, 255, 0.5);
+                    color: white;
+                    border-radius: 50%;
+                    font-size: 16px;
+                    padding: 17px;
+                    position: absolute;
+                    transition: .5s;
+
+                    &:hover{
+                        background-color: rgba(255, 255, 255, 0.6);
+                    }
+                }
+
+                .fa-chevron-left{
+                    left: 20px;
+                }
+                .fa-chevron-right{
+                    right: 20px;
+                }
+            }
+        }
+    }
+
+    .active{
+        opacity: 1!important;
+    }
+}
+
+#about-section{
+    .about-desc{
+        h2{
+            font-size: 45px;
+        }
+        p{
+            font-size: 20px;
+            font-weight: 500;
+        }
+    }
+}
+
+#brand-section{
+    img{
+        width: 50%;
+        height: 50px;
+    }
+}
+#card-section{
+
+    i{
+        font-size: 35px;
+        color: #d9232d;
+    }
+    .card-info{
+        padding: 20px;
+        height: 200px;
+
+        strong{
+            font-size: 20px;
+            transition: .5s;
+            cursor: pointer;
+
+            &:hover{
+                color: #d9232d;
+            }
+        }
+    }
+}
+
+#footer-section{
+    background-color: #515d6a;
+
+    .icons{
+       width: 30px;
+       height: 30px;
+       background-color: rgba(255, 255, 255, 0.1);
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       border-radius: 5px;
+       transition: .5s;
+
+       i{
+         font-size: 16px;
+       }
+
+       &:hover{
+          background-color: #d9232d;
+       }
+    }
+
+    ul{
+        padding-left: 0;
+
+        li{
+            list-style: none;
+
+            a{
+                text-decoration: none;
+                color: gray;
+            }
+
+            i{
+                font-size: 12px;
+            }
+        }
+    }
+
+    .subscribe{
+        input{
+            display: inline-block;
+            height: 40px;
+        }
+
+        .btns{
+            height: 40px;
+        }
+    }
+}
+#endl{
+    background-color: #4a5562;
+
+    a{
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.1);
+    }
+}
+
+@media screen and(min-width: 992px){
+    .bars{
+        display: none;
+    }
+}
+@media screen and(max-width: 992px){
+    .bars{
+        display: flex;
+        justify-content: flex-end;
+    }
+    .services{
+        display: none;
+    }
+}
+@media screen and(max-width: 768px){
+    #brand-section{
+        img{
+            width: 100%;
+        }
+    }
+
+    .subscribe{
+        input{
+            display: inline-block;
+            width: 100%;
+        }
+        .btns{
+            width: 100%;
+            height: 40px;
+        }
+    }
+}
+@media screen and(min-width: 768px){
+    #brand-section{
+        img{
+            width: 50%;
+        }
+    }
+}
