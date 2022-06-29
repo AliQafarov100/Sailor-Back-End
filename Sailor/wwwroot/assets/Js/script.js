@@ -5,30 +5,33 @@ let sliderItem = document.querySelector(".slider");
 left.forEach(leftBtn => {
     leftBtn.addEventListener("click", function (e) {
         e.preventDefault();
-        let active = document.querySelector(".active");
+        let active = document.querySelector(".activeSlider");
 
-        active.classList.remove("active");
-        if(active.previousElementSibling == null){
-            sliderItem.lastElementChild.classList.add("active");
+
+        active.classList.remove("activeSlider");
+        if (active.previousElementSibling == null) {
+            sliderItem.lastElementChild.classList.add("activeSlider");
         }
-        else{
-            active.previousElementSibling.classList.add("active");
+        else {
+            active.previousElementSibling.classList.add("activeSlider");
         }
     })
 })
 
 right.forEach(rBtn => {
-    rBtn.addEventListener("click", function (e) {
-        e.preventDefault();
-        let active = document.querySelector(".active");
-        active.classList.remove("active");
-        console.log("click");
+    rBtn.addEventListener("click", function () {
 
-        if(active.nextElementSibling == null){
-            sliderItem.firstElementChild.classList.add("active");
+        let active = document.querySelector(".activeSlider");
+        active.classList.remove("activeSlider");
+        // console.log(active.nextElementSibling)
+
+        if (active.nextElementSibling === null) {
+            sliderItem.firstElementChild.classList.add("activeSlider");
+            console.log("first")
         }
-        else{
-            active.nextElementSibling.classList.add("active");
+        else {
+            active.nextElementSibling.classList.add("activeSlider");
+            console.log("next")
         }
     })
 })

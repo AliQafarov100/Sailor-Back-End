@@ -7,7 +7,7 @@
     <section id="slider-section">
         <div class="slider">
             @{
-                var count = 0;
+                int count = 0;
 
                 foreach (Slider slider in Model.Sliders)
                 {
@@ -16,7 +16,7 @@
 
                     if (count == 1)
                     {
-                        sliderOrder = "items active";
+                        sliderOrder = "items activeSlider";
                     }
                     else
                     {

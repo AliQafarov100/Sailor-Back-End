@@ -89,7 +89,7 @@
                 right: 20px;
             }
 
-    #slider-section .active {
+    #slider-section .activeSlider {
         opacity: 1!important;
     }
 
